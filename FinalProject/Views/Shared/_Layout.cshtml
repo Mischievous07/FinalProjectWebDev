@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Gigantic Modding Hub</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <nav>
+        <a asp-controller="Home" asp-action="Index">Home</a> |
+        <a asp-controller="Home" asp-action="About">About</a> |
+        <a asp-controller="Mods" asp-action="Index">Mods</a> |
+        <a asp-controller="Guides" asp-action="Index">Guides</a> |
+        <a asp-controller="Home" asp-action="Me">About Me</a>
+    </nav>
+
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
