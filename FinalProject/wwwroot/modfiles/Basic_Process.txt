@@ -1,0 +1,107 @@
+# Basic Modding Process
+
+## TLDR
+
+1. Decompress the UPK File
+2. Find the object you want to edit
+3. Use Doomstrike to dump that object into modfile format
+3. Create a modfile with your edits
+4. Use Doomstrike to apply it
+
+## Mod Manager
+
+[DoomStrike](https://gitlab.com/gigmodding/tools/doomstrike) will handle the decompression/patching/recompression steps for you.
+
+### Step 1 - Decompress
+
+Doomstrike keeps a directory of all UPKs it has decompressed inside the folder Gigantic is installed to: `Gigantic\DoomStrike\UPK_UNCOMPRESSED`
+
+After running the community patchset, usually what you want should be able to be found there.
+
+![DoomStrike Decompressed UPKs](./img/DoomUPKDecompressed.png){width=50%}
+
+<details>
+<summary>If the UPK you want to edit isnt already decompressed here</summary>
+
+You can make use of the `UPK Parse` feature, just select the upk file name in `UPK Selection`
+
+</details>
+
+
+### Step 2 - Inspect
+
+After decompressing the upk, you're going to want to inspect the UPK code.
+
+You can inspect the UPK through [UE-Explorer](https://github.com/UE-Explorer/UE-Explorer/releases) or [UPKExplorer](https://gitlab.com/gigmodding/tools/upk-explorer)
+
+### Step 3 - Dump Object
+
+The [Dev Release](https://gitlab.com/gigmodding/tools/doomstrike/-/package_files/277004244/download) of Doomstrike has support for dumping objects directly into modfile format.
+
+![DoomStrike UPK Parse](./img/DoomUPKParse.png){width=50%}
+
+Normal Objects:
+- Enable `Dev Mode` in Preferences (Click the three dots in the top right)
+- Go to Dev Tab
+- Go to UPK Parse Feature
+- **UPK Selection:** i.e. `DYNPAWN_Assault_SF.upk` (has autocomplete)
+- **Object Selection:** i.e. `rxgamecontent.huAssault2_DirectHit_ApplyDamage` (has autocomplete)
+- Hit Parse Object
+
+![DoomStrike JsonCache Parse](./img/DoomJsonCacheParse.png){width=50%}
+
+For Upgrade objects (object name ends in _MOD):
+- Enable Dev Mode in settings
+- Go to Dev Tab
+- Go to JsonCache Parse Feature
+- **Object Selection:** i.e. `huAssault2_Poison_Projectile_MOD` (no autocomplete) (do not include rxgamecontent)
+
+### Step 3 - Mod File Creation
+
+In short, a mod file is just a plaintext file for search and replaces.
+
+Put the original in Before, put your changes in After.
+
+There are plenty of examples in the [Mod Repo](https://gitlab.com/gigmodding/mods/upk_mods)
+
+These can require fairly complex changes depending on what needs to be done, but a simple mod looks something like:
+
+```
+MOD_NAME=Beckett Smart Grenade Nerf
+AUTHOR=Me
+DESCRIPTION=Adjusts the damage bonus given by Smart Grenade
+UPK_FILE = DYNPAWN_Assault_SF.upk
+
+OBJECT = rxgamecontent.huAssault2_DirectHit_ApplyDamage : AUTO
+
+[BEFORE_HEX]
+<DamageAmount>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 100>
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<DamageAmount>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 75>
+[/AFTER_HEX]
+```
+
+- `UPK_FILE` being the upk you wish to edit.
+- `OBJECT` being the object name grabbed from `UE-Explorer`
+  - Note the `AUTO`, this allows the `AFTER` section to not match the size of the `BEFORE` section
+  - For JsonCache edits, this must be `INPL` instead
+
+### Step 4 - Testing Modfile
+
+In Doomstrike:
+
+- Check `Install Single Mod`
+- Browse and select your new modfile
+- Hit `Install Mods`
+- Check the Log Viewer for any errors
+- Load up the Game
