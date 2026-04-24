@@ -4,6 +4,7 @@ using FinalProject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260424002821_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,11 +37,11 @@ namespace FinalProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("CompleteMod")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FileName")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -58,8 +61,8 @@ namespace FinalProject.Migrations
                         {
                             Id = 1,
                             Author = "Me",
+                            CompleteMod = "Yes",
                             Description = "Reworks Oru's Guilty by Association upgrade",
-                            FileName = "oru_rework.txt",
                             Name = "Oru Rework Guilty by Association.",
                             ReleaseDate = new DateTime(2024, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -67,8 +70,8 @@ namespace FinalProject.Migrations
                         {
                             Id = 2,
                             Author = "Me",
+                            CompleteMod = "Yes",
                             Description = "Fixes Oru's card effect groups not being removed by Cleanse",
-                            FileName = "oru_cleanse_fix.txt",
                             Name = "Oru Cleanse Fix",
                             ReleaseDate = new DateTime(2024, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -76,8 +79,8 @@ namespace FinalProject.Migrations
                         {
                             Id = 3,
                             Author = "Me",
+                            CompleteMod = "Yes",
                             Description = "Reduces endlag for Xenobia's abilities.",
-                            FileName = "xenobia_endlag.txt",
                             Name = "Xenobia Endlag Reductions",
                             ReleaseDate = new DateTime(2024, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });

@@ -15,8 +15,17 @@ namespace FinalProject.Controllers
 
         public IActionResult Index()
         {
-            var mods = _context.Mods.ToList(); // THIS is the link to DB
+            var mods = _context.Mods.ToList(); 
             return View(mods);
+        }
+        public IActionResult Details(int id)
+        {
+            var mod = _context.Mods.FirstOrDefault(m => m.Id == id);
+
+            if (mod == null)
+                return NotFound();
+
+            return View(mod);
         }
     }
 }

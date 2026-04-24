@@ -1,0 +1,464 @@
+MOD_NAME=Xeno Ability Feel Skins
+AUTHOR=Me
+DESCRIPTION=Mimics the lower endlag that Xenobia was given across her abilities in GCE/RE (Skin Fix)
+UPK_FILE = DYNSKIN_HeroSkin_Despair_Default_CV00_SF.upk
+
+// Table edits are here as well because new upk file lol but since they're entirely contained to this file its fine
+[ADD_NAME_ENTRY]
+<%T "RxAnimNotify_MovementWindow_3">
+<DefaultNameFlags>
+
+[ADD_NAME_ENTRY]
+<%T "RxAnimNotify_MovementWindow_0">
+<DefaultNameFlags>
+
+[ADD_NAME_ENTRY]
+<%T "RxAnimNotify_MovementWindow_2">
+<DefaultNameFlags>
+
+[ADD_EXPORT_ENTRY]
+<Class.RxGame.RxAnimNotify_MovementWindow> // Type
+<NullRef> // ParentClassRef
+<Class.CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_47> // Owner
+<RxAnimNotify_MovementWindow_3> // NameIdx
+<NullRef> // ArchetypeRef
+<DefaultExportFlags> // Flags
+
+[ADD_EXPORT_ENTRY]
+<Class.RxGame.RxAnimNotify_MovementWindow> // Type
+<NullRef> // ParentClassRef
+<Class.CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_48> // Owner
+<RxAnimNotify_MovementWindow_0> // NameIdx
+<NullRef> // ArchetypeRef
+<DefaultExportFlags> // Flags
+
+[ADD_EXPORT_ENTRY]
+<Class.RxGame.RxAnimNotify_MovementWindow> // Type
+<NullRef> // ParentClassRef
+<Class.CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_50> // Owner
+<RxAnimNotify_MovementWindow_2> // NameIdx
+<NullRef> // ArchetypeRef
+<DefaultExportFlags> // Flags
+
+// relies on table edits
+// ----------------------
+// Editing the objects to be completely empty so it doesn't #CRASH
+// ----------------------
+
+OBJECT = CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_47.RxAnimNotify_MovementWindow_3 : AUTO
+
+[BEFORE_HEX]
+<None>
+<NullRef>
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<None> // End
+[/AFTER_HEX]
+
+OBJECT = CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_48.RxAnimNotify_MovementWindow_0 : AUTO
+
+[BEFORE_HEX]
+<None>
+<NullRef>
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<None> // End
+[/AFTER_HEX]
+
+OBJECT = CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_50.RxAnimNotify_MovementWindow_2 : AUTO
+
+[BEFORE_HEX]
+<None>
+<NullRef>
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<None> // End
+[/AFTER_HEX]
+
+// ----------------------------------------
+// Array size edits because this shit is jank yo
+// ----------------------------------------
+
+OBJECT = CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_47 : AUTO
+
+[BEFORE_HEX]
+<Notifies>
+<ArrayProperty>
+<%u 872> // Size
+<%u 0> // ArrayIndex
+<%u 7> // ArraySize
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<Notifies>
+<ArrayProperty>
+<%u 996> // Size
+<%u 0> // ArrayIndex
+<%u 8> // ArraySize
+[/AFTER_HEX]
+
+OBJECT = CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_48 : AUTO
+
+[BEFORE_HEX]
+<Notifies>
+<ArrayProperty>
+<%u 996> // Size
+<%u 0> // ArrayIndex
+<%u 8> // ArraySize
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<Notifies>
+<ArrayProperty>
+<%u 1120> // Size
+<%u 0> // ArrayIndex
+<%u 9> // ArraySize
+[/AFTER_HEX]
+
+OBJECT = CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_50 : AUTO
+
+[BEFORE_HEX]
+<Notifies>
+<ArrayProperty>
+<%u 1368> // Size
+<%u 0> // ArrayIndex
+<%u 11> // ArraySize
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<Notifies>
+<ArrayProperty>
+<%u 1492> // Size
+<%u 0> // ArrayIndex
+<%u 12> // ArraySize
+[/AFTER_HEX]
+
+// ----------------------------------------
+// ZONE actual window edits
+// ----------------------------------------
+
+OBJECT = CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_47 : AUTO
+
+[BEFORE_HEX]
+// Notifies[6]
+<Time>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0.702914>
+
+<Notify>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_47.RxAnimNotify_ChainWindow_6>
+
+<Comment>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<None>
+
+<Duration>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0>
+
+<None> // End
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+// Notifies[6]
+<Time>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0.47>
+
+<Notify>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_47.RxAnimNotify_ChainWindow_6>
+
+<Comment>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<None>
+
+<Duration>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0>
+
+<None> // End
+
+// Notifies[7]
+<Time>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0.61>
+
+<Notify>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_47.RxAnimNotify_MovementWindow_3>
+
+<Comment>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<None>
+
+<Duration>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0>
+
+<None> // End
+[/AFTER_HEX]
+
+// ----------------------------------------
+// CURSE actual window edits
+// ----------------------------------------
+
+OBJECT = CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_48 : AUTO
+
+[BEFORE_HEX]
+// Notifies[7]
+<Time>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0.70333314>
+
+<Notify>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_48.RxAnimNotify_ChainWindow_7>
+
+<Comment>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<None>
+
+<Duration>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0>
+
+<None> // End
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+// Notifies[7]
+<Time>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0.47>
+
+<Notify>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_48.RxAnimNotify_ChainWindow_7>
+
+<Comment>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<None>
+
+<Duration>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0>
+
+<None> // End
+
+// Notifies[8]
+<Time>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0.69>
+
+<Notify>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_48.RxAnimNotify_MovementWindow_0>
+
+<Comment>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<None>
+
+<Duration>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0>
+
+<None> // End
+[/AFTER_HEX]
+
+// ----------------------------------------
+// WAVE actual window edits
+// ----------------------------------------
+
+OBJECT = CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_50 : AUTO
+
+[BEFORE_HEX]
+// Notifies[9]
+<Time>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0.7728397>
+
+<Notify>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_50.RxAnimNotify_ChainWindow_9>
+
+<Comment>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<None>
+
+<Duration>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0>
+
+<None> // End
+
+// Notifies[10]
+<Time>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0.8066663>
+
+<Notify>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_50.RxAnimNotify_ComboWindow_1>
+
+<Comment>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<None>
+
+<Duration>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0>
+
+<None> // End
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+// Notifies[9]
+<Time>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0.62>
+
+<Notify>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_50.RxAnimNotify_ChainWindow_9>
+
+<Comment>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<None>
+
+<Duration>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0>
+
+<None> // End
+
+// Notifies[10]
+<Time>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0.64>
+
+<Notify>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_50.RxAnimNotify_ComboWindow_1>
+
+<Comment>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<None>
+
+<Duration>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0>
+
+<None> // End
+
+// Notifies[11]
+<Time>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0.95>
+
+<Notify>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<CH_Despair_Default_Anim.Despair_Default_AnimSet.AnimSequence_50.RxAnimNotify_MovementWindow_2>
+
+<Comment>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<None>
+
+<Duration>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0>
+
+<None> // End
+[/AFTER_HEX]

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260423235732_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20260424004218_AddModFileNames")]
+    partial class AddModFileNames
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,6 +41,10 @@ namespace FinalProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -58,6 +62,7 @@ namespace FinalProject.Migrations
                             Id = 1,
                             Author = "Me",
                             Description = "Reworks Oru's Guilty by Association upgrade",
+                            FileName = "oru_rework.txt",
                             Name = "Oru Rework Guilty by Association.",
                             ReleaseDate = new DateTime(2024, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -66,6 +71,7 @@ namespace FinalProject.Migrations
                             Id = 2,
                             Author = "Me",
                             Description = "Fixes Oru's card effect groups not being removed by Cleanse",
+                            FileName = "oru_cleanse_fix.txt",
                             Name = "Oru Cleanse Fix",
                             ReleaseDate = new DateTime(2024, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -74,6 +80,7 @@ namespace FinalProject.Migrations
                             Id = 3,
                             Author = "Me",
                             Description = "Reduces endlag for Xenobia's abilities.",
+                            FileName = "xenobia_endlag.txt",
                             Name = "Xenobia Endlag Reductions",
                             ReleaseDate = new DateTime(2024, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });

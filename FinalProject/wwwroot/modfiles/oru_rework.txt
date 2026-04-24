@@ -1,0 +1,1028 @@
+MOD_NAME=Oru Guilty by Association Rework
+AUTHOR=Me
+DESCRIPTION=Reworks Oru's Guilty by Association to cause Judgement to chain to all players within 3m on hit
+UPK_FILE = DYNPAWN_Glyph_SF.upk
+
+// relies on table edits 
+
+OBJECT = rxgamecontent.skGlyph1_Judgement_HasUpgrade_FreshSplash : AUTO
+
+[BEFORE_HEX]
+<None>
+<NullRef>
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<UpgradeNames>
+<ArrayProperty>
+<%u 12> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+// UpgradeNames[0]
+<huGlyph1_FreshSplash_Upgrade>
+<None> // End
+[/AFTER_HEX]
+
+// creating the new projectile object that has the bounce
+
+OBJECT = rxgamecontent.huGlyph1_FreshSplash_Proj : AUTO
+
+[BEFORE_HEX]
+<bExplodeWhenRangeHit>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<HomingInfo>
+<StructProperty>
+<%u 145> // Size
+<%u 0> // ArrayIndex
+<SHomingInfo>
+<bIsHoming>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<DegreesPerSecond>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 120>
+
+<MaxDegrees>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 75>
+
+<DistanceBeforeHoming>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 100>
+
+<DistanceFromTargetToStop>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 25>
+
+<None> // End
+
+<OnImpactEnemy>
+<ArrayProperty>
+<%u 108> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+// OnImpactEnemy[0]
+<Conditions>
+<ArrayProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%u 0> // ArraySize
+<ExclusionConditions>
+<ArrayProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%u 0> // ArraySize
+<Actions>
+<ArrayProperty>
+<%u 16> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+<#rxgamecontent.skGlyph1_Judgement_FilterImpacts>
+<None> // End
+
+<ProjectileData>
+<StructProperty>
+<%u 260> // Size
+<%u 0> // ArrayIndex
+<ProjDataStruct>
+<DeflectionEvent>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<CH_Glyph_Audio.Glyph_Hits_Skill1_DEFLECT>
+
+<PhysMatInstigator>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<CH_Glyph_Default_PhysMat.Glyph_Skill1_Projectile_PhysMatInstigator>
+
+<ProjectileRange>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 1800>
+
+<Speed>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 2000>
+
+<MaxSpeed>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 2000>
+
+<FlySoundEvent>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<CH_Glyph_Audio.Glyph_Skill1_Card_Fly>
+
+<FlightTemplate>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<FX_Glyph_Default_Skills.Particles.FX_Glyph_S1_Projectile>
+
+<CollisionHeight>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 15>
+
+<CollisionRadius>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 15>
+
+<None> // End
+
+<CylinderComponent>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<rxgamecontent.skGlyph1_Judgement_Proj.CollisionCylinder>
+
+<CollisionComponent>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<rxgamecontent.skGlyph1_Judgement_Proj.CollisionCylinder>
+
+<None> // End
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<bExplodeWhenRangeHit>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<HomingInfo>
+<StructProperty>
+<%u 145> // Size
+<%u 0> // ArrayIndex
+<SHomingInfo>
+<bIsHoming>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<DegreesPerSecond>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 10>
+
+<MaxDegrees>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 75>
+
+<DistanceBeforeHoming>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 100>
+
+<DistanceFromTargetToStop>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 25>
+
+<None> // End
+
+<OnImpactEnemy>
+<ArrayProperty>
+<%u 108> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+// OnImpactEnemy[0]
+<Conditions>
+<ArrayProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%u 0> // ArraySize
+<ExclusionConditions>
+<ArrayProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%u 0> // ArraySize
+<Actions>
+<ArrayProperty>
+<%u 16> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+<#rxgamecontent.skGlyph1_Judgement_FilterImpacts>
+<None> // End
+
+<ProjectileData>
+<StructProperty>
+<%u 260> // Size
+<%u 0> // ArrayIndex
+<ProjDataStruct>
+<DeflectionEvent>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<CH_Glyph_Audio.Glyph_Hits_Skill1_DEFLECT>
+
+<PhysMatInstigator>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<CH_Glyph_Default_PhysMat.Glyph_Skill1_Projectile_PhysMatInstigator>
+
+<ProjectileRange>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 2800>
+
+<Speed>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 5500>
+
+<MaxSpeed>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 5500>
+
+<FlySoundEvent>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<CH_Glyph_Audio.Glyph_Skill1_Card_Fly>
+
+<FlightTemplate>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<FX_Glyph_Default_Skills.Particles.FX_Glyph_S1_Projectile>
+
+<CollisionHeight>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 15>
+
+<CollisionRadius>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 15>
+
+<None> // End
+
+<CylinderComponent>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<rxgamecontent.skGlyph1_Judgement_Proj.CollisionCylinder>
+
+<CollisionComponent>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<rxgamecontent.skGlyph1_Judgement_Proj.CollisionCylinder>
+
+<ChainInfo>
+<StructProperty>
+<%u 2402> // Size
+<%u 0> // ArrayIndex
+<SChainingInfo>
+<FindChainTargetHitCheckParamList>
+<ArrayProperty>
+<%u 2342> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+// FindChainTargetHitCheckParamList[0]
+<Origin>
+<StructProperty>
+<%u 124> // Size
+<%u 0> // ArrayIndex
+<ActionOriginData>
+<OriginType>
+<ByteProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<EActionOriginType>
+<AOT_Impact>
+
+<Offset>
+<StructProperty>
+<%u 12> // Size
+<%u 0> // ArrayIndex
+<Vector>
+<%f 0> // X
+<%f 0> // Y
+<%f 0> // Z
+<SocketName>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<None>
+
+<None> // End
+
+<Rotation>
+<StructProperty>
+<%u 148> // Size
+<%u 0> // ArrayIndex
+<ActionRotationData>
+<RotationType>
+<ByteProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<EActionRotationType>
+<ART_ImpactDirection>
+
+<Offset>
+<StructProperty>
+<%u 12> // Size
+<%u 0> // ArrayIndex
+<Rotator>
+<%i 0> // Pitch
+<%i 0> // Yaw
+<%i 0> // Roll
+<MinPitch>
+<IntProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%i -16384>
+
+<MaxPitch>
+<IntProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%i 16384>
+
+<None> // End
+
+<StartingTargets>
+<ByteProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<EHitCheckStartingList>
+<HCSL_TargetableActors>
+
+<Region>
+<StructProperty>
+<%u 533> // Size
+<%u 0> // ArrayIndex
+<HitCheckRegion>
+<Shape>
+<ByteProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<EHitCheckRegionShapeType>
+<SRST_Sphere>
+
+<CylinderData>
+<StructProperty>
+<%u 64> // Size
+<%u 0> // ArrayIndex
+<Cylinder>
+<Radius>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0>
+
+<Height>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0>
+
+<None> // End
+
+<SphereData>
+<StructProperty>
+<%u 36> // Size
+<%u 0> // ArrayIndex
+<HitCheckSphere>
+<Radius>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 300> // RADIUS FOR HITCHECK THIS IS HOW YOU CHANGE IT LEAVING COMMENT
+
+<None> // End
+
+<FrustumData>
+<StructProperty>
+<%u 156> // Size
+<%u 0> // ArrayIndex
+<HitCheckFrustum>
+<Distance>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0>
+
+<NearExtents>
+<StructProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<Vector2D>
+<%f 0> // X
+<%f 0> // Y
+<HalfAngle>
+<StructProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<Vector2D>
+<%f 0> // X
+<%f 0> // Y
+<FarExtents>
+<StructProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<Vector2D>
+<%f 0> // X
+<%f 0> // Y
+<None> // End
+
+<TraceData>
+<StructProperty>
+<%u 101> // Size
+<%u 0> // ArrayIndex
+<HitCheckTrace>
+<Distance>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0>
+
+<Extents>
+<StructProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<Vector2D>
+<%f 0> // X
+<%f 0> // Y
+<bCheckForGroundOnMissOnly>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<None> // End
+
+<None> // End
+
+<Flags>
+<StructProperty>
+<%u 483> // Size
+<%u 0> // ArrayIndex
+<HitCheckTraceFlags>
+<bIgnoresSelf>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<bIgnoresAllies>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<bIgnoresEnemies>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<bIgnoresWorld>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<bIgnoresStealth>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<bIgnoresDestructibles>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<bIgnoresTheDead>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<bIgnoresDodgeState>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<bIgnoresUniqueList>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<bIgnoresTitans>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<bIgnoresHeroes>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<bIgnoresMinions>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<bIgnoresPets>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<bIgnoresAIHomePoints>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<bIgnoresBlockingVolumes>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<bIgnoresIncorporeal>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<bIgnoresTargetables>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<bIgnoresBlocks>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<bIgnoresDeflect>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<None> // End
+
+<MaxDistanceToCheckForGround>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0>
+
+<bSkipActorUpdateOnCheckForGround>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<MaxTargets>
+<IntProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%i 0>
+
+<bNeedLineOfSight>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<SavedActorNames>
+<ArrayProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%u 0> // ArraySize
+<bFindBestLocation>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<PawnToUseForHitCheck>
+<JsonRefProperty>
+<%u 12> // Size
+<%u 0> // ArrayIndex
+<None>
+<NullRef>
+
+<PawnTargetedLocationData>
+<StructProperty>
+<%u 647> // Size
+<%u 0> // ArrayIndex
+<FindBestNewLocationData>
+<HeightFudge>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 5>
+
+<bIgnorePawnEncroachment>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<bFindGroundOnly>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<bDoLedgeCheck>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<bDoLedgeCircleCheck>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<LedgeHeight>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 50>
+
+<LedgeDepth>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 30>
+
+<LedgeMinDepthPerc>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0.8>
+
+<LedgeAngle>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0.707>
+
+<bDoBelowCheck>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<bDoBelowCircleCheck>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<HeightBelowToCheck>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 300>
+
+<bDoAboveCheck>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<bDoAboveCircleCheck>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<HeightAboveToCheck>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 300>
+
+<bDoCircleCheck>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 1> // True
+
+<CircleCheckMaxAdditionalRadius>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 0>
+
+<CircleCheckRadiusMultiplier>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 3>
+
+<CircleCheckAngle>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 60>
+
+<NumCircleChecks>
+<IntProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%i 6>
+
+<bFindPathableLocation>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<PathableRadius>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 100>
+
+<PathableHeight>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 100>
+
+<bIgnorePawnHeight>
+<BoolProperty>
+<%u 0> // Size
+<%u 0> // ArrayIndex
+<%b 0> // False
+
+<None> // End
+
+<None> // End
+
+<TotalNumChains>
+<IntProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%i 1>
+
+<None> // End
+
+<None> // End
+[/AFTER_HEX]
+
+// ADDING THE NEW ACT PROJECTILE THAT ACTUALLY FIRES IT WHEN IT DETECTS UPGRADE
+
+OBJECT = rxgamecontent.huGlyph1_FreshSplash_ActProj : AUTO
+
+[BEFORE_HEX]
+<ProjectileTemplate>
+<JsonRefProperty>
+<%u 12> // Size
+<%u 0> // ArrayIndex
+<#rxgamecontent.skGlyph1_Judgement_Proj>
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<ProjectileTemplate>
+<JsonRefProperty>
+<%u 12> // Size
+<%u 0> // ArrayIndex
+<#rxgamecontent.huGlyph1_FreshSplash_Proj>
+[/AFTER_HEX]
+
+// CHANGING THE HITCHECK TO USE THE NEW PROJECTILES WHEN HAVING UPGRADE
+
+OBJECT = rxgamecontent.skGlyph1_Judgement_HC_FindTarget : AUTO
+
+[BEFORE_HEX]
+<OnHit>
+<ArrayProperty>
+<%u 108> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+// OnHit[0]
+<Conditions>
+<ArrayProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%u 0> // ArraySize
+<ExclusionConditions>
+<ArrayProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%u 0> // ArraySize
+<Actions>
+<ArrayProperty>
+<%u 16> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+<#rxgamecontent.skGlyph1_Judgement_ActProj>
+<None> // End
+
+<OnMiss>
+<ArrayProperty>
+<%u 108> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+// OnMiss[0]
+<Conditions>
+<ArrayProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%u 0> // ArraySize
+<ExclusionConditions>
+<ArrayProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%u 0> // ArraySize
+<Actions>
+<ArrayProperty>
+<%u 16> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+<#rxgamecontent.skGlyph1_Judgement_ActProj>
+<None> // End
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<OnHit>
+<ArrayProperty>
+<%u 236> // Size
+<%u 0> // ArrayIndex
+<%u 2> // ArraySize
+// OnHit[0]
+<Conditions>
+<ArrayProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%u 0> // ArraySize
+<ExclusionConditions>
+<ArrayProperty>
+<%u 16> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+<#rxgamecontent.skGlyph1_Judgement_HasUpgrade_FreshSplash>
+<Actions>
+<ArrayProperty>
+<%u 16> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+<#rxgamecontent.skGlyph1_Judgement_ActProj>
+<None> // End
+
+// OnHit[1]
+<Conditions>
+<ArrayProperty>
+<%u 16> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+<#rxgamecontent.skGlyph1_Judgement_HasUpgrade_FreshSplash>
+<ExclusionConditions>
+<ArrayProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%u 0> // ArraySize
+<Actions>
+<ArrayProperty>
+<%u 16> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+<#rxgamecontent.huGlyph1_FreshSplash_ActProj>
+<None> // End
+
+<OnMiss>
+<ArrayProperty>
+<%u 236> // Size
+<%u 0> // ArrayIndex
+<%u 2> // ArraySize
+// OnMiss[0]
+<Conditions>
+<ArrayProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%u 0> // ArraySize
+<ExclusionConditions>
+<ArrayProperty>
+<%u 16> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+<#rxgamecontent.skGlyph1_Judgement_HasUpgrade_FreshSplash>
+<Actions>
+<ArrayProperty>
+<%u 16> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+<#rxgamecontent.skGlyph1_Judgement_ActProj>
+<None> // End
+
+// OnMiss[1]
+<Conditions>
+<ArrayProperty>
+<%u 16> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+<#rxgamecontent.skGlyph1_Judgement_HasUpgrade_FreshSplash>
+<ExclusionConditions>
+<ArrayProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%u 0> // ArraySize
+<Actions>
+<ArrayProperty>
+<%u 16> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+<#rxgamecontent.huGlyph1_FreshSplash_ActProj>
+<None> // End
+
+<SortInfo>
+<StructProperty>
+<%u 48> // Size
+<%u 0> // ArrayIndex
+<SortInfoStruct>
+<SortingMetric>
+<ByteProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<EHitCheckSortType>
+<HCST_BestAimFirst>
+
+<None> // End
+[/AFTER_HEX]
+
+// making old upgrade blank to remove the old upgrade
+
+OBJECT = rxgamecontent.huGlyph1_FreshSplash_Upgrade : AUTO
+
+[BEFORE_HEX]
+<%u 11654> // NetIndex
+
+<Modifications>
+<ArrayProperty>
+<%u 16> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+<#rxgamecontent.huGlyph1_FreshSplash_FilterImpacts_MOD>
+<None> // End
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<%u 11654> // NetIndex
+
+<None> // End
+[/AFTER_HEX]

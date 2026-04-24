@@ -2,14 +2,27 @@
 
 <h2>Mods</h2>
 
-<table>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Author</th>
+        <th>Date</th>
+    </tr>
+
     @foreach (var mod in Model)
     {
         <tr>
-            <td>@mod.Name</td>
+            <td>
+                <a asp-controller="Mods"
+                   asp-action="Details"
+                   asp-route-id="@mod.Id">
+                    @mod.Name
+                </a>
+            </td>
             <td>@mod.Description</td>
             <td>@mod.Author</td>
-            <td>@mod.ReleaseDate</td>
+            <td>@mod.ReleaseDate.ToShortDateString()</td>
         </tr>
     }
 </table>

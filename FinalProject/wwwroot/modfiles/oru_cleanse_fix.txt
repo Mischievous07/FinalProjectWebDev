@@ -1,0 +1,313 @@
+MOD_NAME=Oru Status Effect Fix
+AUTHOR=Me
+DESCRIPTION=Fixes Oru's status effects missing last tick of damage and not being cleansable
+UPK_FILE = DYNPAWN_Glyph_SF.upk
+
+OBJECT = rxgamecontent.skGlyph1_Judgment_EG : AUTO
+
+// Judgement (Refresh And DoT Fix)
+[BEFORE_HEX]
+<EffectDuration>
+<StructProperty>
+<%u 76> // Size
+<%u 0> // ArrayIndex
+<StatusEffectDuration>
+<DurationMode>
+<ByteProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<EEffectDurationType>
+<EDT_Count>
+
+<DurationValue>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 3>
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<EffectDuration>
+<StructProperty>
+<%u 76> // Size
+<%u 0> // ArrayIndex
+<StatusEffectDuration>
+<NullRef><NullRef>
+<ByteProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<EEffectDurationType>
+<EDT_Count>
+
+<DurationValue>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 3.1>
+[/AFTER_HEX]
+
+OBJECT = rxgamecontent.skGlyph2_Beast_EG
+
+// The Beast
+[BEFORE_HEX]
+<DurationValue>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 3>
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<DurationValue>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 3.1>
+[/AFTER_HEX]
+
+// CLEANSE FIXES
+// Relies on a table edit 
+
+OBJECT = rxgamecontent.skGlyph1_Judgment_EG : AUTO
+
+[BEFORE_HEX]
+<PersistentFX_Enemy>
+<StructProperty>
+<%u 68> // Size
+<%u 0> // ArrayIndex
+<ParticleSystemAttachment>
+<PS_Template>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<FX_Glyph_Default_Skills.Particles.FX_Glyph_CardJudgement_SE>
+
+<SocketName>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<FX_debuff_main>
+
+<None> // End
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<PersistentFX_Enemy>
+<StructProperty>
+<%u 68> // Size
+<%u 0> // ArrayIndex
+<ParticleSystemAttachment>
+<PS_Template>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<FX_Glyph_Default_Skills.Particles.FX_Glyph_CardJudgement_SE>
+
+<SocketName>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<FX_debuff_main>
+
+<None> // End
+
+<KeywordTagInfoList>
+<ArrayProperty>
+<%u 165> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+// KeywordTagInfoList[0]
+<KeywordTag>
+<ByteProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<EKeywordTags>
+<KWT_EffectType_Debuff>
+
+<TransferType>
+<ByteProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<EKeywordTagTransference>
+<EKTT_TransferableToSubsequentPayload>
+
+<PayloadInclusionType>
+<ByteProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<EKeywordTagPayloadInclusion>
+<EKTPI_IncludeInPayloadDamage>
+
+<Dummy>
+<ByteProperty>
+<%u 1> // Size
+<%u 0> // ArrayIndex
+<None>
+<%b 0>
+
+<None> // End
+[/AFTER_HEX]
+
+// THE BEAST 
+
+OBJECT = rxgamecontent.skGlyph2_Beast_EG : AUTO
+
+[BEFORE_HEX]
+<PersistentFX_Enemy>
+<StructProperty>
+<%u 68> // Size
+<%u 0> // ArrayIndex
+<ParticleSystemAttachment>
+<PS_Template>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<FX_Glyph_Default_Skills.Particles.FX_Glyph_CardBeast_SE>
+
+<SocketName>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<FX_debuff_main>
+
+<None> // End
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<PersistentFX_Enemy>
+<StructProperty>
+<%u 68> // Size
+<%u 0> // ArrayIndex
+<ParticleSystemAttachment>
+<PS_Template>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<FX_Glyph_Default_Skills.Particles.FX_Glyph_CardBeast_SE>
+
+<SocketName>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<FX_debuff_main>
+
+<None> // End
+
+<KeywordTagInfoList>
+<ArrayProperty>
+<%u 165> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+// KeywordTagInfoList[0]
+<KeywordTag>
+<ByteProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<EKeywordTags>
+<KWT_EffectType_Debuff>
+
+<TransferType>
+<ByteProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<EKeywordTagTransference>
+<EKTT_TransferableToSubsequentPayload>
+
+<PayloadInclusionType>
+<ByteProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<EKeywordTagPayloadInclusion>
+<EKTPI_IncludeInPayloadDamage>
+
+<Dummy>
+<ByteProperty>
+<%u 1> // Size
+<%u 0> // ArrayIndex
+<None>
+<%b 0>
+
+<None> // End
+[/AFTER_HEX]
+
+// CRIPPLE CARDS
+
+OBJECT = rxgamecontent.huGlyph2_PushCripple_CardEG : AUTO
+
+[BEFORE_HEX]
+<PersistentFX_Enemy>
+<StructProperty>
+<%u 68> // Size
+<%u 0> // ArrayIndex
+<ParticleSystemAttachment>
+<PS_Template>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<FX_Glyph_Default_Skills.Particles.FX_Glyph_CardBeast_SE>
+
+<SocketName>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<FX_debuff_main>
+
+<None> // End
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<PersistentFX_Enemy>
+<StructProperty>
+<%u 68> // Size
+<%u 0> // ArrayIndex
+<ParticleSystemAttachment>
+<PS_Template>
+<ObjectProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<FX_Glyph_Default_Skills.Particles.FX_Glyph_CardBeast_SE>
+
+<SocketName>
+<NameProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<FX_debuff_main>
+
+<None> // End
+
+<KeywordTagInfoList>
+<ArrayProperty>
+<%u 165> // Size
+<%u 0> // ArrayIndex
+<%u 1> // ArraySize
+// KeywordTagInfoList[0]
+<KeywordTag>
+<ByteProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<EKeywordTags>
+<KWT_EffectType_Debuff>
+
+<TransferType>
+<ByteProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<EKeywordTagTransference>
+<EKTT_TransferableToSubsequentPayload>
+
+<PayloadInclusionType>
+<ByteProperty>
+<%u 8> // Size
+<%u 0> // ArrayIndex
+<EKeywordTagPayloadInclusion>
+<EKTPI_IncludeInPayloadDamage>
+
+<Dummy>
+<ByteProperty>
+<%u 1> // Size
+<%u 0> // ArrayIndex
+<None>
+<%b 0>
+
+<None> // End
+[/AFTER_HEX]
