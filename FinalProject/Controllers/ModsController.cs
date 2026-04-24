@@ -1,5 +1,6 @@
-﻿using FinalProject.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using FinalProject.Models;
+using System.Linq;
 
 namespace FinalProject.Controllers
 {
@@ -14,7 +15,7 @@ namespace FinalProject.Controllers
 
         public IActionResult Index()
         {
-            var mods = _context.Mods.ToList();
+            var mods = _context.Mods.ToList(); // THIS is the link to DB
             return View(mods);
         }
     }

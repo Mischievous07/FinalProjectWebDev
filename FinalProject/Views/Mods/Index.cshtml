@@ -3,20 +3,13 @@
 <h2>Mods</h2>
 
 <table>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Author</th>
-        <th>Date</th>
-    </tr>
-
     @foreach (var mod in Model)
     {
         <tr>
             <td>@mod.Name</td>
             <td>@mod.Description</td>
             <td>@mod.Author</td>
-            <td>@mod.ReleaseDate.ToShortDateString()</td>
+            <td>@mod.ReleaseDate</td>
         </tr>
     }
 </table>
