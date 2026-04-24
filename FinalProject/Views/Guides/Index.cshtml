@@ -1,6 +1,92 @@
-﻿<h2>Modding Guide</h2>
-<p>
-    <a href="~/modfiles/Basic_Process.txt" target="_blank">
-        Here
-    </a>you will find the basic guide on how to install and create mods for Gigantic.
-</p>
+﻿@{
+    ViewData["Title"] = "Modding Guides";
+}
+
+<h2 class="mb-4">Modding Guides</h2>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+
+        <h4>Basic Modding Process</h4>
+
+        <h5 class="mt-3">TLDR</h5>
+        <ol>
+            <li>Decompress the UPK file</li>
+            <li>Find the object you want to edit</li>
+            <li>Dump the object using Doomstrike</li>
+            <li>Create a modfile with your edits</li>
+            <li>Install and test the mod</li>
+        </ol>
+
+        <hr />
+
+        <h5>Mod Manager (Doomstrike)</h5>
+        <p>
+            <a href="https://gitlab.com/gigmodding/tools/doomstrike" target="_blank">
+                Doomstrike
+            </a>
+            handles decompression, patching, and recompression of game files.
+        </p>
+
+        <h5>Step 1 - Decompress</h5>
+        <p>
+            Doomstrike stores decompressed UPKs in:
+            <code>Gigantic\DoomStrike\UPK_UNCOMPRESSED</code>
+        </p>
+
+        <p class="text-muted">
+            After applying community patches, most files will already be available here.
+        </p>
+
+        <h5>Step 2 - Inspect</h5>
+        <p>
+            Use tools like
+            <a href="https://github.com/UE-Explorer/UE-Explorer/releases" target="_blank">UE-Explorer</a>
+            or UPKExplorer to inspect game objects.
+        </p>
+
+        <h5>Step 3 - Dump Object</h5>
+        <ul>
+            <li>Enable Dev Mode in Doomstrike</li>
+            <li>Use UPK Parse or JsonCache Parse</li>
+            <li>Select object and extract mod data</li>
+        </ul>
+
+        <h5>Step 4 - Mod File Creation</h5>
+        <p>
+            A mod file is a text-based patch system using BEFORE/AFTER values.
+        </p>
+
+        <pre class="bg-light p-3 border rounded">
+MOD_NAME=Beckett Smart Grenade Nerf
+AUTHOR=Me
+DESCRIPTION=Adjusts the damage bonus given by Smart Grenade
+UPK_FILE = DYNPAWN_Assault_SF.upk
+
+OBJECT = rxgamecontent.huAssault2_DirectHit_ApplyDamage : AUTO
+
+[BEFORE_HEX]
+<DamageAmount>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 100>
+[/BEFORE_HEX]
+
+[AFTER_HEX]
+<DamageAmount>
+<FloatProperty>
+<%u 4> // Size
+<%u 0> // ArrayIndex
+<%f 75>
+[/AFTER_HEX]
+        </pre>
+        <h5>Step 5 - Testing</h5>
+        <ul>
+            <li>Install mod via Doomstrike</li>
+            <li>Check logs for errors</li>
+            <li>Launch game and test changes</li>
+        </ul>
+
+    </div>
+</div>

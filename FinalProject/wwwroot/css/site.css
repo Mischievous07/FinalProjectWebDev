@@ -6,3 +6,11 @@ body {
 nav a {
     margin-right: 10px;
 }
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}

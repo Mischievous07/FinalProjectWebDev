@@ -1,2 +1,55 @@
-﻿<h1>Gigantic Modding Hub</h1>
-<p>This site showcases some of my work modding Gigantic (2017), one of my favorite games.</p>
+﻿<div class="p-5 mb-4 bg-white rounded shadow-sm">
+    <h1 class="display-5">Gigantic Modding Hub</h1>
+    <p class="lead">
+        A personal collection of mods, fixes, and gameplay improvements for Gigantic (2017).
+    </p>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>Mods</h5>
+                <p>View some example gameplay and balance mods.</p>
+
+                <a asp-controller="Mods"
+                   asp-action="Index"
+                   class="btn btn-primary">
+                    View Mods
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>Guides</h5>
+                <p>Learn how mods are created and installed.</p>
+
+                <a asp-controller="Guides"
+                   asp-action="Index"
+                   class="btn btn-primary">
+                    View Guides
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>About</h5>
+                <p>Why Gigantic is still worth modding today.</p>
+
+                <a asp-controller="Home"
+                   asp-action="About"
+                   class="btn btn-primary">
+                    About Game
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
